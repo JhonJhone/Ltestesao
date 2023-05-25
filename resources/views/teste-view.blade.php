@@ -10,6 +10,6 @@
 <p>
     Só não disse por onde 😏🥴😈
 </p>
-<p>A variável {{$valor_da_controller}} está partindo para uma aventura, dê seu ultimo tchau para ela</p>
+<p>A variável {{$valor_da_controller}} está partindo para uma aventura, dê seu ultimo tchau para ele 😭</p>
 </marquee>
 @endsection
