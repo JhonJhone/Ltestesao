@@ -5,6 +5,10 @@
 @section('content')
     <h2>Adicione seu produto</h2>
 
+    @if ($errors)
+        {{$errors}}
+    @endif
+
     <form action="{{ route('produtos.addSave') }}" method="post">
         @csrf
         <input type="text" name="name" placeholder="Nome do Produto"> <br>
