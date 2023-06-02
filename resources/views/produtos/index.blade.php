@@ -14,7 +14,7 @@
 
 
     <tr>
-        <td>{{$prod->name}}</td>
+        <td><a href="{{route('produtos.view', $prod->id)}}">{{$prod->name}}</a></td>
         <td>R${{ number_format($prod->price, 2, ',', '.')}}</td>
         <td>{{$prod->quantity}}</td>
     </tr>
