@@ -3,6 +3,11 @@
 @section('title', 'Produtos')
 
 @section('content')
+
+@if (session('sucesso'))
+    <div>{{session('sucesso')}}</div>
+@endif
+
 <table border="1">
     <tr>
         <th>Nome</th>

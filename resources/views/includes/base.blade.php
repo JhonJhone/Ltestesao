@@ -9,7 +9,15 @@
 <body>
 
     <h1>Meu pão na tua mão</h1>
+    {{-- Menu --}}
+    <div>
+        <ul>
+            <li><a href="{{route ('home')}}">Home</a></li>
+            <li><a href="{{route ('produtos')}}">Produtos</a></li>
+        </ul>
+    </div>
     <hr>
+    {{-- Conteúdo --}}
     @yield('content')
 
 </body>
