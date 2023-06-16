@@ -9,8 +9,8 @@ use Illuminate\Validation\Rule;
 class ProdutosController extends Controller
 {
     public function index(){
-        #$prod = Produto::all();
-        $prod = Produto::withTrashed()->get();
+        $prod = Produto::all();
+        #$prod = Produto::withTrashed()->get();
 
         return view('produtos.index', [
             'prod' => $prod,
