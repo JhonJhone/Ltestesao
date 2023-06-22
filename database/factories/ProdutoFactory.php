@@ -18,7 +18,8 @@ class ProdutoFactory extends Factory
     {
         $names = [
             '38tão', 'Cadillac', 'Alissom', 'Henry', 'Guifin', 'GugaZaaz', 'Cachorro', 'Camaco', 'Chucrutes', 'Patati', 'Patata',
-            'Rolex', 'Chaveiro', 'Tomada', 'Tomate', 'Maça', 'Bibis', 'Caneca dedo do meio', 'Estojo Tapioca', ''
+            'Rolex', 'Chaveiro', 'Tomada', 'Tomate', 'Maça', 'Bibis', 'Caneca dedo do meio', 'Estojo Tapioca', 'Almofada', 'Bagaço',
+            'Paçoca', 'Batata Sorriso',
         ];
         return [
             'name' => $this->faker->randomElement($names),

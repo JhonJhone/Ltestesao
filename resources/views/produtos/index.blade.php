@@ -8,6 +8,16 @@
     <div>{{session('sucesso')}}</div>
 @endif
 
+<form action="{{route('produtos')}}" method="POST">
+    @csrf
+    <input type="text" name="busca">
+    <select name="ord">
+        <option value="asc">Crescenu</option>
+        <option value="desc">Descenu</option>
+    </select>
+    <input type="submit" value="🚬🗿">
+</form>
+
 <table border="1">
     <tr>
         <th>Nome</th>
