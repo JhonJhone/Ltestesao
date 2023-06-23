@@ -27,7 +27,7 @@
         <th>Excluir</th>
     </tr>
 
-@foreach ($prod as $prod)
+@foreach ($prods as $prod)
 
 
     <tr>
@@ -39,5 +39,8 @@
     </tr>
 @endforeach
 </table>
+
+{{ $prods->links('vendor.pagination.default') }}
+
     <a href="{{ route('produtos.add') }}">Adiciar Produto</a> <br><br>
 @endsection

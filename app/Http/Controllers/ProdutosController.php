@@ -18,7 +18,8 @@ class ProdutosController extends Controller
             ->orderBy('name', $ord)
             ->get();
         }else{
-            $prod = Produto::all();
+            // $prod = Produto::all();
+            $prod = Produto::paginate();
         }
 
         #Busca produtos apagados também
@@ -28,7 +29,7 @@ class ProdutosController extends Controller
         #$prod = Produto::onlyTrashed()->get();
 
         return view('produtos.index', [
-            'prod' => $prod,
+            'prods' => $prod,
         ]);
     }
 
