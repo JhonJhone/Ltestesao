@@ -73,13 +73,13 @@ class ProdutosController extends Controller
 
     public function view(Produto $produto){
         return view('produtos.view', [
-            'prod' => $produto,
+            'prods' => $produto,
         ]);
     }
 
     public function delete(Produto $produto){
         return view('produtos.delete', [
-            'prod' => $produto,
+            'prods' => $produto,
         ]);
     }
     public function deleteForReal(Produto $produto){
