@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,8 +36,10 @@ public function addSave(Request $form){
     $dados = $form->validate([
         'name' => 'required|min:3',
         'email' => 'required',
-        'password' => 'required',
+        'password' => 'string|required',
     ]);
+    $dados['password'] = Hash::make($dados['password']);
+
     Usuario::create($dados);
     return redirect()->route('usuarios')->with('sucesso', 'Usuario criado com sucesso');
 }
@@ -43,5 +47,25 @@ public function view(Usuario $usuario){
     return view('usuarios.view', [
         'users' => $usuario,
     ]);
+}
+public function login(Request $request){
+    //Se for POST, tenta logar
+    if($request->isMethod('POST')){
+        $data = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        if (Auth::attempt($data)){
+            return redirect()->route('home');
+        } else {
+            return redirect()->route('login')->with('erro', 'Burro pra caralho 🚬🗿');
+        }
+    }
+    return view('usuarios.login');
+}
+public function logout(){
+    Auth::logout();
+
+    return redirect()->route('home');
 }
 }

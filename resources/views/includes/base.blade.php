@@ -10,6 +10,17 @@
 <body>
 
     <h1>Meu pão na tua mão</h1>
+{{-- Usuario logado --}}
+    <div>
+        @if (Auth::user())
+            Olá {{ Auth::user()->name }}, bonitão 😘 <br>
+            <a href="{{ route('logout') }}">Ir embora</a>
+
+        @else
+            <a href="{{ route('login') }}">Faça o login, safado</a>
+        @endif
+    </div>
+
     {{-- Menu --}}
     <div>
         <ul>

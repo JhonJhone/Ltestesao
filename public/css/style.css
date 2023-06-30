@@ -3,6 +3,7 @@ body {
     animation: bgColor 5s infinite linear;
     width: 200px;
     height: 100px;
+    color: rgb(121, 121, 121);
   }
   @keyframes bgColor {
     100%,
