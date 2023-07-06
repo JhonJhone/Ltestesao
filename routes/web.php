@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,13 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos')->middleware('auth');//Acessa apenas logado
+Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos')->middleware('auth'); //Acessa apenas logado
 Route::post('/produtos', [ProdutosController::class, 'index']);
 
-Route::get('/produtos/add',[ProdutosController::class, 'add'])->name('produtos.add');
+Route::get('/produtos/add', [ProdutosController::class, 'add'])->name('produtos.add');
 Route::post('/produtos/add', [ProdutosController::class, 'addSave'])->name('produtos.addSave');
 
-Route::get('/produtos/{produto}',[ProdutosController::class, 'view'])->name('produtos.view');
+Route::get('/produtos/{produto}', [ProdutosController::class, 'view'])->name('produtos.view');
 
 Route::get('/produtos/edit/{produto}', [ProdutosController::class, 'edit'])->name('produtos.edit');
 Route::post('/produtos/edit/{produto}', [ProdutosController::class, 'editSave'])->name('produtos.editSave');
@@ -38,12 +39,22 @@ Route::get('/users', [UserController::class, 'index'])->name('usuarios')->middle
 
 Route::post('/users', [UserController::class, 'index']);
 
-Route::get('/users/add',[UserController::class, 'add'])->name('usuarios.add');
+Route::get('/users/add', [UserController::class, 'add'])->name('usuarios.add');
 Route::post('/users/add', [UserController::class, 'addSave'])->name('usuarios.addSave');
 
-Route::get('/users/{usuario}',[UserController::class, 'view'])->name('usuarios.view');
+Route::get('/users/{usuario}', [UserController::class, 'view'])->name('usuarios.view');
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+//Rotas automáticas de verificação do email
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
