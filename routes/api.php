@@ -15,10 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-//  /api/produtos/list
-Route::prefix('produtos')->group(function () {
-    Route::get('list', [ApiProdutosController::class, 'list']);
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+// //  /api/produtos/list
+// Route::prefix('produtos')->group(function () {
+//     Route::get('list', [ApiProdutosController::class, 'list']);
+//     Route::post
+// });
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('refresh', [AuthController::class, 'refresh']);
+
+Route::post('teste', [AuthController::class, 'test']);
